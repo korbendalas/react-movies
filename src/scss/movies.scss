@@ -1,0 +1,31 @@
+.movies {
+  &__form {
+    background-color: #1c1c1c;
+    padding: 25px 20px 0;
+    height: 105px;
+    font-size: 48px;
+    &__content {
+      margin: 0 auto;
+      position: relative;
+      i {
+        color: white;
+        font-size: 31px;
+        position: absolute;
+        left: 20px;
+        top: 10;
+        z-index: 50;
+      }
+    }
+  }
+  &__search {
+    border: none;
+    height: 55px;
+    border-radius: 40px;
+    color: #fff;
+    background-color: #353535;
+    padding-left: 70px;
+  }
+
+  &__container {
+  }
+}

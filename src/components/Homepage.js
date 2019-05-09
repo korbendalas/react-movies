@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import HeroImage from "./HeroImage";
+import Movies from "./Movies";
 
-export default function Homepage() {
+function Homepage(props) {
   return (
-    <div className="container">
-      Homepage
+    <div className="homepage">
+      <HeroImage />
+      <Movies />
+
+      <button>Increase counter</button>
     </div>
-  )
+  );
 }
+export default Homepage;
