@@ -29,3 +29,16 @@
   &__container {
   }
 }
+
+//BUTTON TO LOAD MORE MOVIES
+.load-more-button {
+  color: #fff;
+  padding: 20px;
+  margin: 60px 0;
+  width: 100%;
+  font-size: 42px;
+  background-color: #16d47b;
+  &:hover {
+    background-color: #23ed8e;
+  }
+}

@@ -1,8 +1,11 @@
 .movie {
-  max-width: 290px;
-  width: 100%;
-  height: auto;
+  display: inline-block;
+  max-width: 280px;
+  max-height: 435px;
+  margin-top: 20px;
   img {
-    max-width: 290px;
+    height: 100%;
   }
+}
+.movie-link {
 }

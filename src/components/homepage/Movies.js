@@ -18,7 +18,7 @@ function Movies(props) {
   const onChangeHandler = event => {
     setSearch(event.target.value);
     //THIS IS WORKING!!!!!!
-    //console.log("sent", event.target.value);
+    console.log("sent", event.target.value);
   };
   {
   }
@@ -50,15 +50,20 @@ function Movies(props) {
           />
         </div>
       </div>
-
-      <div className="movies__grid container mr-auto ml-auto flex flex-wrap" />
       <h1>{heading}</h1>
+      <div className="movies__grid container mr-auto ml-auto ">
+        <div className=" flex flex-wrap justify-between">
+          {popularMovies
+            ? popularMovies.map(item => (
+                <Movie poster={item.poster_path} id={item.id} key={item.id} />
+              ))
+            : "no"}
+        </div>
 
-      {popularMovies
-        ? popularMovies.map(item => (
-            <Movie poster={item.poster_path} id={item.id} key={item.id} />
-          ))
-        : "no"}
+        <button className="load-more-button bg-transparent  font-semibold hover:text-white   hover:border-transparent ">
+          Load More
+        </button>
+      </div>
     </div>
   );
 }
