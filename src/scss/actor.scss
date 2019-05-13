@@ -1,0 +1,21 @@
+.actor {
+  color: #fff;
+  //   flex-grow: 1;
+  padding-bottom: 40px;
+  &__data {
+    width: 300px;
+    background-color: #353535;
+
+    &__name {
+      font-family: "Abel", sans-serif;
+      font-size: 22px;
+      margin: 10px 20px;
+      font-weight: 300;
+    }
+    &__movie_character {
+      font-family: "Abel", sans-serif;
+      font-size: 18px;
+      margin: 0 20px 10px;
+    }
+  }
+}

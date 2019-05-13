@@ -1,0 +1,103 @@
+.movie__info {
+  &__header {
+    padding-top: 40px;
+    &__content {
+      font-family: "Abel", sans-serif;
+      color: #fff;
+      height: 520px;
+      // padding: 40px 20px;
+      margin: 0 auto;
+
+      margin-left: auto;
+      margin-right: auto;
+
+      background: rgba(black, 0.5);
+      img {
+        //max-height: 525px;
+        height: 100%;
+        max-width: 350px;
+      }
+      div {
+        padding: 40px;
+        h1 {
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 48px;
+        }
+        h3 {
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 16px;
+          margin-top: 30px;
+          font-weight: bold;
+        }
+
+        h4 {
+          font-family: Arial, Helvetica, sans-serif;
+          margin: 21px 0;
+        }
+        p {
+          font-size: 18px;
+          line-height: 26px;
+          margin: 18px 0;
+        }
+      }
+
+      ul {
+        list-style: none;
+        li {
+          margin-right: 20px;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+
+.director-heading {
+  margin-top: 5px !important;
+}
+
+.movie__rating {
+  padding: 0 !important;
+  meter {
+    width: 250px;
+    height: 20px;
+    margin-top: 20px;
+    margin-right: 20px;
+    // border-radius: 0;
+    -webkit-user-modify: read-only !important;
+
+    &::-webkit-meter-bar {
+      background: #fff;
+      border: 0;
+    }
+  }
+}
+
+.movie__infobar {
+  background-color: #1c1c1c;
+  padding: 25px 20px 0;
+  height: 105px;
+  font-size: 48px;
+  &__container {
+    margin: 0 auto;
+    color: #fff;
+    font-size: 22px;
+    div {
+      display: flex;
+      align-items: center;
+    }
+    i {
+      padding-right: 10px;
+      font-size: 50px;
+    }
+  }
+}
+
+// ***********************************ACTORS SECTION ****************************************
+.actors {
+  margin: 0 auto;
+  h1 {
+    font-size: 41px;
+    padding: 30px 0;
+  }
+}

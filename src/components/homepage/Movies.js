@@ -23,6 +23,14 @@ function Movies(props) {
   {
   }
 
+  //To increment value for page to load
+
+  const fetchAndIncrement = () => {
+    let page = 1;
+    page++;
+    fetchPopularMovies(page);
+  };
+
   return (
     <div className="movies">
       <div className="movies__form ">
