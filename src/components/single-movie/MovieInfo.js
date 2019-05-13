@@ -4,10 +4,13 @@ import Actor from "./Actor";
 import axios from "axios";
 const apiKey = "975095b34dd7c4ff9937603d683d6501";
 //Change this after finish markup
-const bgImg = `http://image.tmdb.org/t/p/w1280/nmV9MdbzST4xv8WMHwhVgxkHHjM.jpg`;
 
 function MovieInfo(props) {
-  // const[bgImg,setBgImg] = useState('');
+  const [backImg, setBackImg] = useState("");
+
+  let bgImg;
+  if (backImg) bgImg = `http://image.tmdb.org/t/p/w1280/${backImg}`;
+
   const [title, setTitle] = useState("");
   //PLOT
   const [overview, setOverview] = useState("");
@@ -20,6 +23,8 @@ function MovieInfo(props) {
   const [budget, setBudget] = useState("");
   const [revenue, setRevenue] = useState("");
   const [posterImgBackDrop, setPosterImgBackdrop] = useState("");
+  //SET STATE FOR CAST *******************
+  const [cast, setCast] = useState([]);
   //COMPLETE URL FOR POSTER
   let posterImg;
   if (posterImgBackDrop) {
@@ -42,6 +47,7 @@ function MovieInfo(props) {
       )
       .then(res => {
         //Set Homepage currently most popular movie
+        setBackImg(res.data.backdrop_path);
         setPosterImgBackdrop(res.data.poster_path);
         setTitle(res.data.title);
         setOverview(res.data.overview);
@@ -53,7 +59,19 @@ function MovieInfo(props) {
         let parseRevenue = res.data.revenue;
         setRevenue(parseRevenue.toLocaleString("en"));
 
-        console.log("MOVIE INFO RESPONSE", res.data);
+        // console.log("MOVIE INFO RESPONSE", res.data);
+
+        // ************************ AXIOS CALL FOR CAST *************************
+        axios
+          .get(
+            `https://api.themoviedb.org/3/movie/${
+              props.match.params.id
+            }/credits?api_key=${apiKey}&language=en-US`
+          )
+          .then(res => {
+            setCast(res.data.cast);
+            console.log("CAST RESPONSE", res.data);
+          });
       })
       .catch(err => console.log(err));
   }, []);
@@ -123,19 +141,15 @@ function MovieInfo(props) {
           <h1>Actors</h1>
           {/* flex justify-between flex-wrap */}
           <div className="actors__container ">
-            <Actor />
-            <Actor />
-            <Actor />
-            <Actor />
-            <Actor />
-            <Actor />
-            <Actor />
-            <Actor />
-            <Actor />
-            <Actor />
-            <Actor />
-            <Actor />
-            <Actor />
+            {cast
+              ? cast.map(actor => (
+                  <Actor
+                    name={actor.name}
+                    character={actor.character}
+                    img={actor.profile_path}
+                  />
+                ))
+              : null}
           </div>
         </section>
       </div>

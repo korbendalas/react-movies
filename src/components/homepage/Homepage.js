@@ -9,7 +9,6 @@ function Homepage(props) {
   const {
     mostPopularMovie,
     popularMovies,
-
     fetchPopularMovies
   } = React.useContext(Context);
 
@@ -22,8 +21,6 @@ function Homepage(props) {
       />
 
       <Movies />
-
-      
     </div>
   );
 }
