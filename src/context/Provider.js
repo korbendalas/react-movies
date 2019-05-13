@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export const Context = React.createContext();
-export const apiKey = "975095b34dd7c4ff9937603d683d6501";
+const apiKey = "975095b34dd7c4ff9937603d683d6501";
 
 export function Provider(props) {
   //STATE *******************************************************************
@@ -37,7 +37,7 @@ export function Provider(props) {
         //Set a list of 20 most popular movies on first load
         setPopularMovies(...popularMovies, res.data.results);
 
-        console.log("MOVIES RESPONSE", res.data.results);
+        //  console.log("MOVIES RESPONSE", res.data.results);
       })
       .catch(err => console.log(err));
   }

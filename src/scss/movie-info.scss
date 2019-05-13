@@ -94,10 +94,23 @@
 }
 
 // ***********************************ACTORS SECTION ****************************************
+// .actors {
+//   margin: 0 auto;
+//   h1 {
+//     font-size: 41px;
+//     padding: 30px 0;
+//   }
+// }
 .actors {
-  margin: 0 auto;
   h1 {
     font-size: 41px;
     padding: 30px 0;
+  }
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, minmax(190px, 267px));
+    grid-auto-flow: row;
+    grid-gap: 40px;
   }
 }

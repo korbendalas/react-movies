@@ -1,9 +1,13 @@
 .actor {
   color: #fff;
-  //   flex-grow: 1;
-  padding-bottom: 40px;
+
+  img {
+    width: 190px;
+    height: auto;
+  }
   &__data {
-    width: 300px;
+    max-width: 300px;
+    width: 60%;
     background-color: #353535;
 
     &__name {
