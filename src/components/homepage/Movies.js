@@ -7,9 +7,13 @@ import { Consumer } from "../../context/Provider";
 import { DebounceInput } from "react-debounce-input";
 
 function Movies(props) {
-  const { popularMovies, fetchPopularMovies, heading } = React.useContext(
-    Context
-  );
+  const {
+    popularMovies,
+    fetchPopularMovies,
+    heading,
+    searchMovies,
+    searchResults
+  } = React.useContext(Context);
 
   const [search, setSearch] = useState("");
 
@@ -19,14 +23,14 @@ function Movies(props) {
     setSearch(event.target.value);
     //THIS IS WORKING!!!!!!
     console.log("sent", event.target.value);
+    searchMovies(event.target.value);
   };
   {
   }
 
   //To increment value for page to load
-
+  let page = 1;
   const fetchAndIncrement = () => {
-    let page = 1;
     page++;
     fetchPopularMovies(page);
   };
@@ -61,14 +65,20 @@ function Movies(props) {
       <h1>{heading}</h1>
       <div className="movies__grid container mr-auto ml-auto ">
         <div className=" flex flex-wrap justify-between">
-          {popularMovies
+          {/* AKO JE SEARCH RESPONSE PUN ISPISI NJEGA, ako je prazan ispisi popular movies */}
+          {searchResults.length === 0
             ? popularMovies.map(item => (
                 <Movie poster={item.poster_path} id={item.id} key={item.id} />
               ))
-            : "no"}
+            : searchResults.map(item => (
+                <Movie poster={item.poster_path} id={item.id} key={item.id} />
+              ))}
         </div>
 
-        <button className="load-more-button bg-transparent  font-semibold hover:text-white   hover:border-transparent ">
+        <button
+          onClick={fetchAndIncrement}
+          className="load-more-button bg-transparent  font-semibold hover:text-white   hover:border-transparent "
+        >
           Load More
         </button>
       </div>

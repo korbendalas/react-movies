@@ -13,8 +13,8 @@ export function Provider(props) {
     backdrop_path: ""
   });
   const [popularMovies, setPopularMovies] = useState([]);
-
   const [heading, setHeader] = useState("Popular Movies");
+  const [searchResults, setSearchResults] = useState([]);
 
   // END - STATE*********************************************END-STATE************************************
 
@@ -42,6 +42,18 @@ export function Provider(props) {
       .catch(err => console.log(err));
   }
 
+  // ******************************SEARCH*********************************
+  const searchMovies = searchQuery => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${searchQuery}`
+      )
+      .then(res => {
+        setSearchResults(res.data.results);
+      });
+  };
+  //
+
   // *****************LIFECYLCLE***************************************
 
   useEffect(() => {
@@ -51,7 +63,14 @@ export function Provider(props) {
   return (
     //Value
     <Context.Provider
-      value={{ mostPopularMovie, popularMovies, heading, fetchPopularMovies }}
+      value={{
+        mostPopularMovie,
+        popularMovies,
+        heading,
+        fetchPopularMovies,
+        searchMovies,
+        searchResults
+      }}
     >
       {props.children}
     </Context.Provider>
