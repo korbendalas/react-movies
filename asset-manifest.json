@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/react-movies/static/css/main.8bf8dac8.chunk.css",
+    "main.js": "/react-movies/static/js/main.ff20fd53.chunk.js",
+    "main.js.map": "/react-movies/static/js/main.ff20fd53.chunk.js.map",
+    "runtime~main.js": "/react-movies/static/js/runtime~main.bf100f6d.js",
+    "runtime~main.js.map": "/react-movies/static/js/runtime~main.bf100f6d.js.map",
+    "static/js/2.b6846033.chunk.js": "/react-movies/static/js/2.b6846033.chunk.js",
+    "static/js/2.b6846033.chunk.js.map": "/react-movies/static/js/2.b6846033.chunk.js.map",
+    "index.html": "/react-movies/index.html",
+    "precache-manifest.354cb436fd978f3353450d4ad12990e5.js": "/react-movies/precache-manifest.354cb436fd978f3353450d4ad12990e5.js",
+    "service-worker.js": "/react-movies/service-worker.js",
+    "static/css/main.8bf8dac8.chunk.css.map": "/react-movies/static/css/main.8bf8dac8.chunk.css.map",
+    "static/media/header_logo.png": "/react-movies/static/media/header_logo.08494abf.png",
+    "static/media/poster.jpg": "/react-movies/static/media/poster.40f8a3bb.jpg"
+  }
+}
