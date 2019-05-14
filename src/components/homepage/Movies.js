@@ -10,7 +10,6 @@ function Movies(props) {
   const {
     popularMovies,
     fetchPopularMovies,
-    heading,
     searchMovies,
     searchResults,
     fetchAndIncrement
@@ -50,15 +49,6 @@ function Movies(props) {
           className="movies__form__content container flex items-center justify-center"
         >
           <i className="fas fa-search" />
-          {/* <input
-            className="movies__search  flex-1"
-            type="text"
-            name="searchMovies"
-            placeholder="Search"
-            value={search}
-            onChange={onChangeHandler}
-            onSubmit={onSubmit}
-          /> */}
 
           <DebounceInput
             minLength={0}
@@ -69,7 +59,9 @@ function Movies(props) {
           />
         </div>
       </div>
-      <h1>{heading}</h1>
+      <h1>
+        {search === "" || search === null ? "Popular Movies" : "Search Results"}
+      </h1>
       <div className="movies__grid container mr-auto ml-auto ">
         <div className=" flex flex-wrap justify-between">
           {/* AKO JE SEARCH RESPONSE PUN ISPISI NJEGA, ako je prazan ispisi popular movies */}
@@ -89,13 +81,14 @@ function Movies(props) {
                 />
               ))}
         </div>
-
-        <button
-          onClick={fetchAndIncrement}
-          className="load-more-button bg-transparent  font-semibold hover:text-white   hover:border-transparent "
-        >
-          Load More
-        </button>
+        {search === "" || search === null ? (
+          <button
+            onClick={fetchAndIncrement}
+            className="load-more-button bg-transparent  font-semibold hover:text-white   hover:border-transparent "
+          >
+            Load More
+          </button>
+        ) : null}
       </div>
     </div>
   );
