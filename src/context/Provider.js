@@ -15,7 +15,7 @@ export function Provider(props) {
   const [popularMovies, setPopularMovies] = useState([]);
   const [heading, setHeader] = useState("Popular Movies");
   const [searchResults, setSearchResults] = useState([]);
-
+  const [pageNum, setPageNum] = useState(1);
   // END - STATE*********************************************END-STATE************************************
 
   //*********************************FETHCHING POPULAR MOVIES FUNCTION ********************************************
@@ -34,8 +34,11 @@ export function Provider(props) {
           backdrop_path: res.data.results[0].backdrop_path
         });
 
-        //Set a list of 20 most popular movies on first load
-        setPopularMovies(...popularMovies, res.data.results);
+        //Set a list of 20 most popular movies on first load  ...popularMovies,
+
+        let newPopularMovies = popularMovies.concat(res.data.results);
+        // setPopularMovies(...popularMovies,res.data.results);
+        setPopularMovies(newPopularMovies);
 
         //  console.log("MOVIES RESPONSE", res.data.results);
       })
@@ -56,9 +59,13 @@ export function Provider(props) {
 
   // *****************LIFECYLCLE***************************************
 
+  const fetchAndIncrement = () => {
+    setPageNum(pageNum => pageNum + 1);
+  };
+
   useEffect(() => {
-    fetchPopularMovies();
-  }, []);
+    if (pageNum > 0) fetchPopularMovies(pageNum);
+  }, [pageNum]);
 
   return (
     //Value
@@ -69,13 +76,11 @@ export function Provider(props) {
         heading,
         fetchPopularMovies,
         searchMovies,
-        searchResults
+        searchResults,
+        fetchAndIncrement
       }}
     >
       {props.children}
     </Context.Provider>
   );
 }
-
-//Import this in component to acces state
-export const Consumer = Context.Consumer;
