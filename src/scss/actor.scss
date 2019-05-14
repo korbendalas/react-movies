@@ -4,11 +4,19 @@
   img {
     width: 190px;
     height: auto;
+    @media screen and(max-width:840px) {
+      max-width: 100%;
+      width: 55%;
+    }
   }
   &__data {
     max-width: 300px;
     width: 60%;
     background-color: #353535;
+    @media screen and(max-width:840px) {
+      max-width: 100%;
+      width: 100%;
+    }
 
     &__name {
       font-family: "Abel", sans-serif;

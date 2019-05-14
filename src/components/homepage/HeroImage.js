@@ -1,7 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import Spinner from "../Spinner";
+import { Context } from "../../context/Provider";
 
 function HeroImage(props) {
   const { heading, description, backdrop_path } = props;
+  const { showSpinner } = React.useContext(Context);
 
   let img;
   if (props.backdrop_path) {
@@ -10,6 +13,14 @@ function HeroImage(props) {
 
   return (
     <div className={`hero-image`} style={{ backgroundImage: `url(${img}) ` }}>
+      {showSpinner ? (
+        <div className="spinner-backdrop flex justify-center items-center">
+          <div className="spinner-on-load">
+            <Spinner />
+          </div>
+        </div>
+      ) : null}
+
       <div className="hero-image__gradient">
         <div className="hero-image__content container  mr-auto ml-auto mt-0 mb-0">
           <div className="hero-image__content__text ">

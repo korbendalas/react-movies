@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import HeroImage from "./HeroImage";
 import Movies from "./Movies";
-import Spinner from "../Spinner";
 
 import { Context } from "../../context/Provider";
 

@@ -1,5 +1,9 @@
 .movies {
   &__form {
+    @media screen and(max-width:648px) {
+      height: 100%;
+      padding: 10px 20px;
+    }
     background-color: #1c1c1c;
     padding: 25px 20px 0;
     height: 105px;
@@ -8,16 +12,42 @@
       margin: 0 auto;
       position: relative;
       i {
+        @media screen and(max-width:648px) {
+          left: 10px !important;
+          font-size: 25px;
+          top: 7px;
+        }
         color: white;
         font-size: 31px;
         position: absolute;
         left: 20px;
-        top: 10;
+        // top: 3px;
         z-index: 50;
       }
     }
   }
+  &__grid {
+    &__heading {
+      @media screen and(max-width:648px) {
+        padding: 15px;
+      }
+      padding: 30px 0;
+      font-size: 42px;
+    }
+
+    &__container {
+      @media screen and(max-width:559px) {
+        justify-content: center;
+      }
+    }
+  }
   &__search {
+    @media screen and(max-width:648px) {
+      height: 100%;
+      padding: 0;
+      padding-left: 50px;
+      font-size: 30px;
+    }
     border: none;
     height: 55px;
     border-radius: 40px;

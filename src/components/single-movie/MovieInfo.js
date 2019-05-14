@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import posterImg from "../../img/test/poster.jpg";
 import Actor from "./Actor";
 import axios from "axios";
+import Spinner from "../Spinner";
 const apiKey = "975095b34dd7c4ff9937603d683d6501";
+
 //Change this after finish markup
 
 function MovieInfo(props) {
@@ -25,6 +27,7 @@ function MovieInfo(props) {
   const [posterImgBackDrop, setPosterImgBackdrop] = useState("");
   //SET STATE FOR CAST *******************
   const [cast, setCast] = useState([]);
+
   //COMPLETE URL FOR POSTER
   let posterImg;
   if (posterImgBackDrop) {
@@ -38,6 +41,8 @@ function MovieInfo(props) {
   }
 
   useEffect(() => {
+    //Moves page to top on loading
+    window.scrollTo(0, 0);
     //Get single movie data for hero single movie
     axios
       .get(
@@ -70,7 +75,6 @@ function MovieInfo(props) {
           )
           .then(res => {
             setCast(res.data.cast);
-            console.log("CAST RESPONSE", res.data);
           });
       })
       .catch(err => console.log(err));
@@ -86,13 +90,14 @@ function MovieInfo(props) {
         >
           <div className="movie__info__header__content container flex">
             <img src={posterImg} />
+
             <div>
               <h1> {title ? title : "Movie Title"}</h1>
               <h3>PLOT</h3>
               <p>{overview ? overview : "Description"}</p>
               <h4>GENRES</h4>
               {/* Ovde ce da ide array sa zanrovima, bice map */}
-              <ul className="flex">
+              <ul className="flex ">
                 {genres
                   ? genres.map(genre => {
                       return <li>{genre.name}</li>;
@@ -119,7 +124,7 @@ function MovieInfo(props) {
           </div>
         </div>
         {/* ********************** END HERO ************************************** */}
-        <section className="movie__infobar">
+        <div className="movie__infobar">
           <div className="container movie__infobar__container flex items-center justify-between">
             <div className="runing-time">
               <i className="far fa-clock" />
@@ -135,7 +140,7 @@ function MovieInfo(props) {
               Revenue : {revenue ? revenue : null}
             </div>
           </div>
-        </section>
+        </div>
 
         <section className="actors">
           <h1>Actors</h1>

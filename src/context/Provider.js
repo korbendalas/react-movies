@@ -8,14 +8,15 @@ export function Provider(props) {
   //STATE *******************************************************************
 
   const [mostPopularMovie, setMostPopularMovie] = useState({
-    heading: "Naslov",
-    description: "Opis",
+    heading: "",
+    description: "",
     backdrop_path: ""
   });
   const [popularMovies, setPopularMovies] = useState([]);
-  const [heading, setHeader] = useState("Popular Movies");
+  const [showSpinner, setShowSpinner] = useState(true);
   const [searchResults, setSearchResults] = useState([]);
   const [pageNum, setPageNum] = useState(1);
+
   // END - STATE*********************************************END-STATE************************************
 
   //*********************************FETHCHING POPULAR MOVIES FUNCTION ********************************************
@@ -28,20 +29,27 @@ export function Provider(props) {
 
       .then(res => {
         //Set Homepage currently most popular movie
-        setMostPopularMovie({
-          heading: res.data.results[0].original_title,
-          description: res.data.results[0].overview,
-          backdrop_path: res.data.results[0].backdrop_path
-        });
+        if (mostPopularMovie.heading === "") {
+          setMostPopularMovie({
+            heading: res.data.results[0].original_title,
+            description: res.data.results[0].overview,
+            backdrop_path: res.data.results[0].backdrop_path
+          });
+          setShowSpinner(false);
+        }
 
         //Set a list of 20 most popular movies on first load  ...popularMovies,
 
         let newPopularMovies = popularMovies.concat(res.data.results);
         // setPopularMovies(...popularMovies,res.data.results);
+        console.log("Popular Movies", popularMovies);
+        console.log("Popular Movies Next Page", newPopularMovies);
+
         setPopularMovies(newPopularMovies);
 
         //  console.log("MOVIES RESPONSE", res.data.results);
       })
+
       .catch(err => console.log(err));
   }
 
@@ -64,7 +72,9 @@ export function Provider(props) {
   };
 
   useEffect(() => {
-    if (pageNum > 0) fetchPopularMovies(pageNum);
+    if (pageNum > 0) {
+      fetchPopularMovies(pageNum);
+    }
   }, [pageNum]);
 
   return (
@@ -73,11 +83,11 @@ export function Provider(props) {
       value={{
         mostPopularMovie,
         popularMovies,
-        heading,
         fetchPopularMovies,
         searchMovies,
         searchResults,
-        fetchAndIncrement
+        fetchAndIncrement,
+        showSpinner
       }}
     >
       {props.children}
